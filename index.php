@@ -1,3 +1,12 @@
+<?php
+session_start();
+if ((isset($_SESSION['zalogowany'])) && ($_SESSION['zalogowany']==true))
+{
+header('Location: gra.php');
+exit();
+}
+?>
+
 <!DOCTYPE HTML>
 <html lang="pl">
   <head>
@@ -14,3 +23,7 @@
     </form>
   </body>
 </html>
+
+<?php
+if(isset($_SESSION['blad'])) echo $_SESSION['blad'];
+?>
