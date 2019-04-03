@@ -20,7 +20,22 @@ $polaczenie = @new mysqli($host, $db_user, $db_password, $db_name);
     $login = $_POST['login'];
     $haslo = $_POST['haslo'];
 
-    echo "Jest OK!";
+    $sql="SELECT * FROM uzytkownicy WHERE user='$login' AND pass='$haslo'",
+
+      if($rezultat=$polaczenie->query($sql))
+      {
+        $ilu_userow=$rezultat->num_rows;
+
+        if($ilu_userow>0)
+        {
+        $wiersz=$rezultat->fetch_assoc();
+        $user=$wiersz['user'];
+        $rezultat->free_result();
+        echo $user;
+        } else {
+          }
+
+      }
 
     $polaczenie->close();
   }
